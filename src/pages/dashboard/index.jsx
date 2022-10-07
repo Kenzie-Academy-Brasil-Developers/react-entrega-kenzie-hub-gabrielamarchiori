@@ -5,13 +5,12 @@ import { ButtonHeader } from "../../styles/button";
 import { Link } from "react-router-dom";
 import "./style.css"
 
-const Dashboard = ({ setIsAuthenticated }) => {
+const Dashboard = () => {
   const [user, setUser] = useState({});
   const [load, setLoad] = useState(true);
 
   function logout() {
     window.localStorage.clear();
-    setIsAuthenticated(false);
   }
 
   useEffect(() => {
@@ -38,6 +37,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
         </div>
       ) : (
         <div className="page-dashboard">
+          <div class></div>
           <div className="dashboard-header">
             <img src={Logo} alt="Logo" />
             <Link to="/">
