@@ -70,7 +70,7 @@ const Login = () => {
             />
             <p>{errors.password?.message}</p>
 
-            <ButtonRed>Enviar</ButtonRed>
+            <ButtonRed>Entrar</ButtonRed>
 
             <Link to="/signup">
               <span>Ainda não possui conta?</span>
