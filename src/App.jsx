@@ -1,11 +1,11 @@
-import Logo from "./assets/Logo.png"
+import Signup from "./pages/signup"
 
 function App() {
   
 
   return (
     <div className="App">
-      
+      <Signup/>
     </div>
   )
 }

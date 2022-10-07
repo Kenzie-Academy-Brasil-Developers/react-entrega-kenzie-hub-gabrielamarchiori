@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const DivForm = styled.div `
-    width: 90%;
+    width: 95%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -68,7 +68,7 @@ export const DivForm = styled.div `
 export const DivHeader = styled.div`
     display: flex;
     justify-content: space-between;
-    width: 90%;
+    width: 95%;
 
     margin-bottom: 2rem;
 
