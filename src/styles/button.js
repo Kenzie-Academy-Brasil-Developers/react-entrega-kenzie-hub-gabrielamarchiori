@@ -5,6 +5,7 @@ export const ButtonRed = styled.button `
     padding: 1rem 0;
     width: 100%;
     margin-bottom: 2rem;
+    border-radius: var(--radius-1);
 
     background-color: var(--color-primary);
     color: var(--color-grey-0);

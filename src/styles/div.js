@@ -27,7 +27,7 @@ export const DivForm = styled.div `
     }
 
     label {
-        font-size: var(--font-text-3);
+        font-size: var(--font-text-2);
         font-weight: var(--font-weigth-4);
         color: var(--color-grey-0);
 
@@ -38,7 +38,8 @@ export const DivForm = styled.div `
 
         padding: 0.8rem 0.3125rem;
         width: 100%;
-        margin-bottom: 1.4rem;
+        margin-bottom: 10px;
+        
         
         border: 1px solid var(--color-grey-0);
         border-radius: var(--radius-1);
@@ -55,14 +56,28 @@ export const DivForm = styled.div `
        color: var(--color-grey-0);
     }
 
+    p {
+        color: var(--color-grey-0);
+        font-size: var(--font-text-3);
+        margin-bottom: 1.4rem;
+    }
+
+    a {
+        display: flex;
+        justify-content: center;
+    }
+
     span {
         color: var(--color-grey-1);
         font-weight: var(--font-weigth-3);
         font-size: var(--font-text-3);
         text-align: center;
+        
 
         margin-bottom: 1.25rem;
     }
+
+    
 `
 
 export const DivHeader = styled.div `
