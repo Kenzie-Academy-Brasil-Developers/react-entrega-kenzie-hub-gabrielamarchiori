@@ -1,11 +1,14 @@
-import Signup from "./pages/signup"
+import { ToastContainer } from "react-toastify"
+import ToAuthenticate from "./routes"
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   
 
   return (
     <div className="App">
-      <Signup/>
+      <ToastContainer autoClose={2000}/>
+      <ToAuthenticate/>
     </div>
   )
 }

@@ -65,7 +65,7 @@ const Signup = () => {
             
             <DivHeader>
                 <img src={Logo} alt="Logo" />
-                <Link>
+                <Link to="/">
                     <ButtonHeader>Voltar</ButtonHeader>
                 </Link>
             </DivHeader>
@@ -73,7 +73,7 @@ const Signup = () => {
             <DivForm>
                 <h2>Crie sua conta</h2>
                 <span>Rapido e grátis, vamos nessa</span>
-                <form >
+                <form onSubmit={handleSubmit(onSubmit)}>
                     <label htmlFor="name">Nome</label>
                     <input
                     type="text"
@@ -142,6 +142,7 @@ const Signup = () => {
                         Quarto Módulo
                     </option>
                     </select>
+                    <p>{errors.course_module?.message}</p>
 
                     <ButtonDarkRed>Cadastrar</ButtonDarkRed>
                 </form>
