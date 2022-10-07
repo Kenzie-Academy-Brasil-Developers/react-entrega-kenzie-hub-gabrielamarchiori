@@ -44,12 +44,11 @@ const Dashboard = ({ setIsAuthenticated }) => {
               <ButtonHeader onClick={logout}>Sair</ButtonHeader>
             </Link>
           </div>
-          <div className="container">
-            <div className="dashboard-perfil">
+          <div className="dashboard-perfil">
               <h2>Olá, {user.name}</h2>
               <p>{user.course_module}</p>
-            </div>
           </div>
+          
           
           <div className="dashboard-info">
             <h2>Que pena! Estamos em desenvolvimento :(</h2>
