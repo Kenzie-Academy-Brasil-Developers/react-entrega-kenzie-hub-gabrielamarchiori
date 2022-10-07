@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import api from "../../Services/api";
+import api from "../../services/api";
 import Logo from "../../assets/Logo.png";
 import { ButtonHeader } from "../../styles/button";
 import { Link } from "react-router-dom";
@@ -44,10 +44,13 @@ const Dashboard = ({ setIsAuthenticated }) => {
               <ButtonHeader onClick={logout}>Sair</ButtonHeader>
             </Link>
           </div>
-          <div className="dashboard-perfil">
-            <h2>Olá, {user.name}</h2>
-            <p>{user.course_module}</p>
+          <div className="container">
+            <div className="dashboard-perfil">
+              <h2>Olá, {user.name}</h2>
+              <p>{user.course_module}</p>
+            </div>
           </div>
+          
           <div className="dashboard-info">
             <h2>Que pena! Estamos em desenvolvimento :(</h2>
             <p>

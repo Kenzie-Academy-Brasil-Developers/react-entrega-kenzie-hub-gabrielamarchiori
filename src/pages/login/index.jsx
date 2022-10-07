@@ -1,7 +1,7 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
-import api from "../../Services/api";
+import api from "../../services/api";
 import { useNavigate, Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -53,7 +53,7 @@ const Login = ({setIsAuthenticated}) => {
                         <label htmlFor="email">E-mail</label>
                         <input type="email" placeholder="Digite seu e-mail" {...register("email")} />
                         <p>{errors.email?.message}</p>
-
+            
                         <label htmlFor="password">Senha</label>
                         <input type="password" placeholder="Digite sua senha" {...register("password")} />
                         <p>{errors.password?.message}</p>
