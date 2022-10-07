@@ -37,17 +37,22 @@ const Dashboard = () => {
         </div>
       ) : (
         <div className="page-dashboard">
-          <div class></div>
+          <div className="container-dashboard">
+            
           <div className="dashboard-header">
             <img src={Logo} alt="Logo" />
             <Link to="/">
               <ButtonHeader onClick={logout}>Sair</ButtonHeader>
             </Link>
           </div>
-          <div className="dashboard-perfil">
+
+          <div  className="container-perfil">
+            <div className="dashboard-perfil">
               <h2>Olá, {user.name}</h2>
               <p>{user.course_module}</p>
+            </div>
           </div>
+          
           
           
           <div className="dashboard-info">
@@ -56,6 +61,7 @@ const Dashboard = () => {
               Nossa aplicação está em desenvolvimento, em breve teremos
               novidades
             </p>
+          </div>
           </div>
         </div>
       )}
