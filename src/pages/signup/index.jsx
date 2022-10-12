@@ -7,9 +7,10 @@ import api from "../../services/api";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { DivForm, DivHeader } from "../../styles/div";
-import { ButtonDarkRed, ButtonHeader } from "../../styles/button";
+import { ButtonDarkRed } from "../../styles/button";
 import Logo from "../../assets/Logo.png";
 import { RegisterContainer } from "./style";
+import { StyledLinkHeader } from "../../styles/link";
 
 const Signup = () => {
   const forSchema = yup.object().shape({
@@ -64,9 +65,9 @@ const Signup = () => {
       <RegisterContainer>
         <DivHeader>
           <img src={Logo} alt="Logo" />
-          <Link to="/">
-            <ButtonHeader>Voltar</ButtonHeader>
-          </Link>
+          <StyledLinkHeader to="/">
+            Voltar
+          </StyledLinkHeader>
         </DivHeader>
 
         <DivForm>

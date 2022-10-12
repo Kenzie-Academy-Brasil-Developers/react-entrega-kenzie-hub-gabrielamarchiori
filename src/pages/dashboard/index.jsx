@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
 import api from "../../services/api";
 import Logo from "../../assets/Logo.png";
-import { ButtonHeader } from "../../styles/button";
-import { Link } from "react-router-dom";
-
 import { DivDash, DivLoad } from "./style";
+import { StyledLinkHeader } from "../../styles/link";
 
 const Dashboard = () => {
   const [user, setUser] = useState({});
@@ -39,9 +37,9 @@ const Dashboard = () => {
           <div className="container-dashboard">
             <div className="dashboard-header">
               <img src={Logo} alt="Logo" />
-              <Link to="/">
-                <ButtonHeader onClick={logout}>Sair</ButtonHeader>
-              </Link>
+              <StyledLinkHeader to="/" onClick={logout}>
+                Sair
+              </StyledLinkHeader>
             </div>
 
             <div className="container-perfil">

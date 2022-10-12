@@ -8,8 +8,9 @@ import "react-toastify/dist/ReactToastify.css";
 
 import Logo from "../../assets/Logo.png";
 import { DivForm } from "../../styles/div";
-import { ButtonGrey, ButtonRed } from "../../styles/button";
+import { ButtonRed } from "../../styles/button";
 import { LoginContainer } from "./style";
+import { StyledLinkRegister } from "../../styles/link";
 
 const Login = () => {
   const formSchema = yup.object().shape({
@@ -72,9 +73,8 @@ const Login = () => {
               <span>Ainda não possui conta?</span>
             </Link>
 
-            <Link to="/signup">
-              <ButtonGrey>Cadastre-se</ButtonGrey>
-            </Link>
+            <StyledLinkRegister to="/signup"> Cadastre-se
+            </StyledLinkRegister>
           </form>
         </DivForm>
       </LoginContainer>
