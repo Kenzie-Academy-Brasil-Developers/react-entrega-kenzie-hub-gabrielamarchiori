@@ -7,9 +7,9 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import Logo from "../../assets/Logo.png";
-import "./style.css";
 import { DivForm } from "../../styles/div";
 import { ButtonGrey, ButtonRed } from "../../styles/button";
+import { LoginContainer } from "./style";
 
 const Login = () => {
   const formSchema = yup.object().shape({
@@ -40,16 +40,12 @@ const Login = () => {
         toast.success("Login realizado com sucesso!");
       })
 
-      .catch((err) =>
-        setError(toast.error(err.response.data.message), {
-          message: console.log(err.response.data),
-        })
-      );
+      .catch((err) => setError(toast.error(err.response.data.message)));
   };
 
   return (
     <div className="page-login">
-      <div className="login-container">
+      <LoginContainer>
         <img src={Logo} alt="Logo" />
         <DivForm>
           <h2>Login</h2>
@@ -81,7 +77,7 @@ const Login = () => {
             </Link>
           </form>
         </DivForm>
-      </div>
+      </LoginContainer>
     </div>
   );
 };

@@ -40,7 +40,6 @@ export const DivForm = styled.div `
         width: 100%;
         margin-bottom: 10px;
         
-        
         border: 1px solid var(--color-grey-0);
         border-radius: var(--radius-1);
 
@@ -76,10 +75,7 @@ export const DivForm = styled.div `
 
         margin-bottom: 1.25rem;
     }
-
-    
 `
-
 export const DivHeader = styled.div `
     display: flex;
     justify-content: space-between;

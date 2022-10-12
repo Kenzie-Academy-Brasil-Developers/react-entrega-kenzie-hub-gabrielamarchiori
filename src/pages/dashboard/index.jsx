@@ -3,7 +3,8 @@ import api from "../../services/api";
 import Logo from "../../assets/Logo.png";
 import { ButtonHeader } from "../../styles/button";
 import { Link } from "react-router-dom";
-import "./style.css"
+
+import { DivDash, DivLoad } from "./style";
 
 const Dashboard = () => {
   const [user, setUser] = useState({});
@@ -24,46 +25,41 @@ const Dashboard = () => {
         setUser(response.data);
         setLoad(false);
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => err);
   }, []);
 
   return (
     <>
       {load ? (
-        <div className="carregando">
+        <DivLoad>
           <h2>Carregando...</h2>
-        </div>
+        </DivLoad>
       ) : (
-        <div className="page-dashboard">
+        <DivDash>
           <div className="container-dashboard">
-            
-          <div className="dashboard-header">
-            <img src={Logo} alt="Logo" />
-            <Link to="/">
-              <ButtonHeader onClick={logout}>Sair</ButtonHeader>
-            </Link>
-          </div>
+            <div className="dashboard-header">
+              <img src={Logo} alt="Logo" />
+              <Link to="/">
+                <ButtonHeader onClick={logout}>Sair</ButtonHeader>
+              </Link>
+            </div>
 
-          <div  className="container-perfil">
-            <div className="dashboard-perfil">
-              <h2>Olá, {user.name}</h2>
-              <p>{user.course_module}</p>
+            <div className="container-perfil">
+              <div className="dashboard-perfil">
+                <h2>Olá, {user.name}</h2>
+                <p>{user.course_module}</p>
+              </div>
+            </div>
+
+            <div className="dashboard-info">
+              <h2>Que pena! Estamos em desenvolvimento :(</h2>
+              <p>
+                Nossa aplicação está em desenvolvimento, em breve teremos
+                novidades
+              </p>
             </div>
           </div>
-          
-          
-          
-          <div className="dashboard-info">
-            <h2>Que pena! Estamos em desenvolvimento :(</h2>
-            <p>
-              Nossa aplicação está em desenvolvimento, em breve teremos
-              novidades
-            </p>
-          </div>
-          </div>
-        </div>
+        </DivDash>
       )}
     </>
   );
