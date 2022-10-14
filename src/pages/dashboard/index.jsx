@@ -1,34 +1,20 @@
-import { useEffect, useState } from "react";
-import api from "../../services/api";
+import { useContext } from "react";
 import Logo from "../../assets/Logo.png";
 import { DivDash, DivLoad } from "./style";
 import { StyledLinkHeader } from "../../styles/link";
+import { UserContext } from "../../contexts/UserContext";
 
 const Dashboard = () => {
-  const [user, setUser] = useState({});
-  const [load, setLoad] = useState(true);
+  const {user, loading} = useContext(UserContext)
 
   function logout() {
     window.localStorage.clear();
   }
 
-  useEffect(() => {
-    setLoad(true);
-
-    const id = window.localStorage.getItem("authId");
-
-    api
-      .get(`/users/${id}`)
-      .then((response) => {
-        setUser(response.data);
-        setLoad(false);
-      })
-      .catch((err) => err);
-  }, []);
-
+  
   return (
     <>
-      {load ? (
+      {loading ? (
         <DivLoad>
           <h2>Carregando...</h2>
         </DivLoad>
