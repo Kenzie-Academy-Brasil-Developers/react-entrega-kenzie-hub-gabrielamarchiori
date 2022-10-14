@@ -4,25 +4,22 @@ import { DivDash, DivLoad } from "./style";
 import { StyledLinkHeader } from "../../styles/link";
 import { UserContext } from "../../contexts/UserContext";
 import { TechContext } from "../../contexts/TechContext";
-import { AiOutlinePlus } from "react-icons/ai"
-import {BsTrash} from "react-icons/bs"
+import { AiOutlinePlus } from "react-icons/ai";
+import { BsTrash } from "react-icons/bs";
+import AddModal from "../../components/AddModal";
 
 const Dashboard = () => {
-  const {user, loading} = useContext(UserContext)
-  const {technology} = useContext(TechContext)
-  console.log(technology)
-
+  const { user, loading } = useContext(UserContext);
+  const { technology, isAddModal, setAddModal } = useContext(TechContext);
+  
   function logout() {
     window.localStorage.clear();
   }
-    
+
   return (
     <>
-      {loading ? (
-        <DivLoad>
-          <h2>Carregando...</h2>
-        </DivLoad>
-      ) : (
+     
+        {isAddModal && <AddModal/>}
         <DivDash>
           <div className="container-dashboard">
             <div className="dashboard-header">
@@ -42,35 +39,30 @@ const Dashboard = () => {
             <div className="dashboard-info">
               <div className="info-header">
                 <p>Tecnologias</p>
-                <AiOutlinePlus
-                className="icon-plus"
+                <AiOutlinePlus className="icon-plus" 
+                onClick={() => setAddModal(!isAddModal)}
                 />
               </div>
 
               <div className="info-tech">
                 <ul className="list-tech">
                   {technology.map((tech) => {
-
                     return (
                       <li key={tech.id}>
-                      <p>{tech.title}</p>
-                      <div className="status-tech">
-                        <span>{tech.status}</span>
-                        <BsTrash className="icon-trash"/>
-                      </div>
-
-                    </li>
-                    )
-                    
+                        <p>{tech.title}</p>
+                        <div className="status-tech">
+                          <span>{tech.status}</span>
+                          <BsTrash className="icon-trash" />
+                        </div>
+                      </li>
+                    );
                   })}
                 </ul>
-
               </div>
             </div>
           </div>
         </DivDash>
-      )}
-    </>
+      </>
   );
 };
 

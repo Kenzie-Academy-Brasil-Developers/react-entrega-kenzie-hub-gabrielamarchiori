@@ -1,7 +1,8 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import api from "../../services/api";
+import {TechContext} from "../TechContext";
 
 
 export const UserContext = createContext({});
@@ -12,6 +13,8 @@ export const UserProvider = ({ children }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const {setTechnology} = useContext(TechContext)
+
   async function loginUser (data) {
     try {
       const response = await api.post('/sessions', data)
@@ -21,6 +24,7 @@ export const UserProvider = ({ children }) => {
       api.defaults.headers.authorization = `Bearer ${token}`
 
       setUser(infoUser)
+      setTechnology(infoUser.techs)
       localStorage.setItem("tokenUser", token)
 
       const toNavigate = location.state?.from?.pathname || 'dashboard'
