@@ -9,8 +9,8 @@ import { BsTrash } from "react-icons/bs";
 import AddModal from "../../components/AddModal";
 
 const Dashboard = () => {
-  const { user, loading } = useContext(UserContext);
-  const { technology, isAddModal, setAddModal } = useContext(TechContext);
+  const { user } = useContext(UserContext);
+  const { technology, isAddModal, setAddModal, deleteTech } = useContext(TechContext);
   
   function logout() {
     window.localStorage.clear();
@@ -52,7 +52,9 @@ const Dashboard = () => {
                         <p>{tech.title}</p>
                         <div className="status-tech">
                           <span>{tech.status}</span>
-                          <BsTrash className="icon-trash" />
+                          <BsTrash className="icon-trash"
+                          onClick={() => deleteTech(tech.id)}
+                          />
                         </div>
                       </li>
                     );

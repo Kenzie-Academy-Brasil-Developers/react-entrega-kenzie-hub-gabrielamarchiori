@@ -38,8 +38,23 @@ export const TechProvider = ({ children }) => {
     }
   }
 
+  async function deleteTech(id) {
+    const token = localStorage.getItem("tokenUser")
+
+    try {
+      api.defaults.headers.authorization = `Bearer ${token}`
+
+      await api.delete(`/users/techs/${id}`)
+
+      toast.success("Tecnologia deletada com sucesso!!")
+    }
+    catch (error) {
+      toast.error(error.response.data.message)
+    }
+  }
+
   return (
-    <TechContext.Provider value={{ technology, setTechnology, isAddModal, setAddModal, addTech}}>
+    <TechContext.Provider value={{ technology, setTechnology, isAddModal, setAddModal, addTech, deleteTech}}>
       {children}
     </TechContext.Provider>
   );
