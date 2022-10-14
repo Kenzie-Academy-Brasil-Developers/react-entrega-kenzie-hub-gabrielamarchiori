@@ -1,25 +1,32 @@
 import { useContext } from "react";
 import Logo from "../../assets/Logo.png";
-import { DivDash, DivLoad } from "./style";
+import { DashInfo, DivDash, DivLoad } from "./style";
 import { StyledLinkHeader } from "../../styles/link";
 import { UserContext } from "../../contexts/UserContext";
 import { TechContext } from "../../contexts/TechContext";
 import { AiOutlinePlus } from "react-icons/ai";
 import { BsTrash } from "react-icons/bs";
 import AddModal from "../../components/AddModal";
+import EditModal from "../../components/EditModal";
 
 const Dashboard = () => {
   const { user } = useContext(UserContext);
-  const { technology, isAddModal, setAddModal, deleteTech } = useContext(TechContext);
+  const { technology, isAddModal, setAddModal, deleteTech, isEditModal, setEditModal,setTechInfo } = useContext(TechContext);
   
   function logout() {
     window.localStorage.clear();
+  }
+
+  function modalEdite (element) {
+    setTechInfo(element)
+    setEditModal(!isEditModal)
   }
 
   return (
     <>
      
         {isAddModal && <AddModal/>}
+        {isEditModal && <EditModal/>}
         <DivDash>
           <div className="container-dashboard">
             <div className="dashboard-header">
@@ -36,7 +43,7 @@ const Dashboard = () => {
               </div>
             </div>
 
-            <div className="dashboard-info">
+            <DashInfo>
               <div className="info-header">
                 <p>Tecnologias</p>
                 <AiOutlinePlus className="icon-plus" 
@@ -48,7 +55,9 @@ const Dashboard = () => {
                 <ul className="list-tech">
                   {technology.map((tech) => {
                     return (
-                      <li key={tech.id}>
+                      <li key={tech.id}
+                      onClick={() => modalEdite(tech)}
+                      >
                         <p>{tech.title}</p>
                         <div className="status-tech">
                           <span>{tech.status}</span>
@@ -61,7 +70,7 @@ const Dashboard = () => {
                   })}
                 </ul>
               </div>
-            </div>
+            </DashInfo>
           </div>
         </DivDash>
       </>

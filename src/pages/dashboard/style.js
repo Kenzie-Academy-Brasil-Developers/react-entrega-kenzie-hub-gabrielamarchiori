@@ -79,31 +79,78 @@ export const DivDash = styled.div `
                 }
             }
         } 
+    }
+`
 
-        .dashboard-info {
-            gap: 2rem;
-            display: none;
-            flex-direction: column;
-            width: 90%;
-            max-width: 800px;
-        
-            padding-left: 0.8rem;
-            padding-top: 0.8rem; 
+export const DashInfo = styled.div`
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
 
-            h2 {
-                color: var(--color-grey-0);
-                font-weight: var(--font-weigth-1);
-                font-size: var(--font-title-1); 
-            }
+    .info-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
 
-            p {
-                color: var(--color-grey-0);
-                font-weight: var(--font-weigth-4);
-                font-size: var(--font-title-2);
-            }
+        margin-bottom: 25px;
 
-            @media (min-width:769px) {
-                display: flex; 
+        p {
+            color: var(--color-grey-0);
+            font-weight: var(--font-weigth-2) ;
+            font-size: var(--font-title-2);
+        }
+
+        .icon-plus {
+            color: var(--color-grey-0);
+            border-radius: var(--radius-1);
+            background-color: var(--color-grey-3);
+            padding: 10px;
+        }
+    }
+
+    .info-tech {
+        .list-tech {
+            color: var(--color-grey-0);
+            background-color: var(--color-grey-3);
+            border-radius: var(--radius-1);
+
+            padding: 25px;
+
+            li {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+
+                padding: 13px 20px;
+                background-color: var(--color-grey-4);
+                margin-bottom: 25px;
+                border-radius: var(--radius-1);
+
+                p {
+                    color: var(--color-grey-0);
+                    font-weight: var(--font-weigth-1);
+                    font-size: var(--font-text-1);
+                }
+
+                .status-tech {
+                    display: flex;
+                    gap: 25px;
+
+                    span {
+                        color: var(--color-grey-1);
+                        font-weight: var(--font-weigth-4);
+                        font-size: var(--font-text-2);
+                    }
+
+                    .icon-trash {
+                        display: none;
+
+                        @media (min-width: 769px) {
+                            display: block;
+                        }
+                    }
+                }
             }
         }
     }

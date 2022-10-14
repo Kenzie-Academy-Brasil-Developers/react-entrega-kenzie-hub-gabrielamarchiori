@@ -7,6 +7,8 @@ export const TechContext = createContext({});
 export const TechProvider = ({ children }) => {
   const [technology, setTechnology] = useState([]);
   const [isAddModal, setAddModal] = useState(false)
+  const [isEditModal, setEditModal] = useState(false)
+  const [techInfo, setTechInfo] = useState(null)
 
   useEffect(() => {
     async function showTechs() {
@@ -53,8 +55,23 @@ export const TechProvider = ({ children }) => {
     }
   }
 
+  async function editTech (id, data) {
+    const token = localStorage.getItem("tokenUser")
+
+    try {
+      api.defaults.headers.authorization = `Bearer ${token}`
+
+      await api.put(`/users/techs/${id}`, data);
+      setEditModal(false)
+      toast.success("Tecnologia editada com sucesso!!");
+    }
+    catch(error) {
+      toast.error(error.response.data.message)
+    }
+  }
+
   return (
-    <TechContext.Provider value={{ technology, setTechnology, isAddModal, setAddModal, addTech, deleteTech}}>
+    <TechContext.Provider value={{ technology, setTechnology, isAddModal, setAddModal, addTech, deleteTech, isEditModal, setEditModal,techInfo, setTechInfo, editTech }}>
       {children}
     </TechContext.Provider>
   );
