@@ -13,7 +13,7 @@ export const DivModal = styled.div`
         justify-content: center;
         width: 100%;
         height: 100vh;
-        background: rgb(255, 255, 255, 0.3);
+        background: rgba(0, 0, 0, .35);
 
         .screen-modal {
             width: 90%;

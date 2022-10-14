@@ -9,6 +9,10 @@ export const StyledLinkHeader = styled(Link) `
     color: var(--color-grey-0);
     font-size: var(--font-text-2);
     font-weight: var(--font-weigth-2);
+
+    :hover {
+        filter: brightness(50%);
+    }
 `
 
 export const StyledLinkRegister = styled(Link)`
@@ -21,4 +25,8 @@ export const StyledLinkRegister = styled(Link)`
     color: var(--color-grey-0);
     font-size: var(--font-text-1);
     font-weight: var(--font-weigth-3);
+
+    :hover {
+        filter: brightness(50%);
+    }
 `

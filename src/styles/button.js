@@ -11,6 +11,10 @@ export const ButtonRed = styled.button `
     color: var(--color-grey-0);
     font-size: var(--font-text-1);
     font-weight: var(--font-weigth-3);
+
+    :hover {
+        filter: brightness(50%);
+    }
 `
 
 export const ButtonDarkRed = styled(ButtonRed)`

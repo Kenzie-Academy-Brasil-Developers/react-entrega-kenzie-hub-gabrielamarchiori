@@ -110,6 +110,12 @@ export const DashInfo = styled.div`
     }
 
     .info-tech {
+
+        h2{
+            color: var(--color-grey-0);
+            text-align: center;
+            font-size: var(--font-title-1);
+        }
         .list-tech {
             color: var(--color-grey-0);
             background-color: var(--color-grey-3);
@@ -127,6 +133,10 @@ export const DashInfo = styled.div`
                 margin-bottom: 25px;
                 border-radius: var(--radius-1);
 
+                :hover {
+                    background-color: var(--color-grey-2);
+                }
+
                 p {
                     color: var(--color-grey-0);
                     font-weight: var(--font-weigth-1);
@@ -143,11 +153,21 @@ export const DashInfo = styled.div`
                         font-size: var(--font-text-2);
                     }
 
+                    button {
+                        background-color: var(--color-grey-4);
+                        color: var(--color-grey-0);
+
+                        :hover {
+                            background-color: var(--color-grey-2);
+                }
+                    }
+
                     .icon-trash {
                         display: none;
 
                         @media (min-width: 769px) {
                             display: block;
+                            
                         }
                     }
                 }
