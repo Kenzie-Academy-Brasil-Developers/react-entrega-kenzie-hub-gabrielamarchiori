@@ -1,18 +1,22 @@
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import api from "../../services/api";
 
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { DivForm, DivHeader } from "../../styles/div";
 import { ButtonDarkRed } from "../../styles/button";
 import Logo from "../../assets/Logo.png";
 import { RegisterContainer } from "./style";
 import { StyledLinkHeader } from "../../styles/link";
+import { UserContext } from "../../contexts/UserContext";
+import { useContext } from "react";
 
 const Signup = () => {
+  const { registerUser } = useContext(UserContext);
+
   const forSchema = yup.object().shape({
     email: yup.string().required("E-mail obrigatório").email("E-mail inválido"),
     password: yup
@@ -44,36 +48,18 @@ const Signup = () => {
     resolver: yupResolver(forSchema),
   });
 
-  const navigate = useNavigate();
-
-  const onSubmit = (data) => {
-    api
-      .post("/users", data)
-      .then((response) => {
-        response;
-        navigate("/");
-        toast.success("Cadastrado com sucesso!!");
-      })
-      .catch((error) => {
-        error;
-        toast.error(error.response.data.message);
-      });
-  };
-
   return (
     <div className="page-register">
       <RegisterContainer>
         <DivHeader>
           <img src={Logo} alt="Logo" />
-          <StyledLinkHeader to="/">
-            Voltar
-          </StyledLinkHeader>
+          <StyledLinkHeader to="/">Voltar</StyledLinkHeader>
         </DivHeader>
 
         <DivForm>
           <h2>Crie sua conta</h2>
           <span>Rapido e grátis, vamos nessa</span>
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form onSubmit={handleSubmit(registerUser)}>
             <label htmlFor="name">Nome</label>
             <input
               type="text"

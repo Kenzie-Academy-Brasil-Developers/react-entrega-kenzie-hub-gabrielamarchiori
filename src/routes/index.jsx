@@ -9,7 +9,7 @@ const ToAuthenticate = () => {
     <Routes>
       <Route path="/" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
-      <Route element={<ProtectedRoutes/>}>
+      <Route element={<ProtectedRoutes />}>
         <Route path="/dashboard" element={<Dashboard />} />
       </Route>
     </Routes>
