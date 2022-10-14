@@ -22,6 +22,9 @@ const AddModal = () => {
         <div className="Container-modal">
             <div className="modal">
                 <div className="screen-modal">
+                    <div className="my-modal">
+                        
+                    </div>
                     <div className="modal-header">
                         <h3>Cadastrar Tecnologia</h3>
                         <IoMdCloseCircleOutline className="icon-close"

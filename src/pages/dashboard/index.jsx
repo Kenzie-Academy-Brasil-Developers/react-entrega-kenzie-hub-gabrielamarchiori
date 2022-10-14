@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import Logo from "../../assets/Logo.png";
-import { DashInfo, DivDash, DivLoad } from "./style";
+import { DashInfo, DivDash} from "./style";
 import { StyledLinkHeader } from "../../styles/link";
 import { UserContext } from "../../contexts/UserContext";
 import { TechContext } from "../../contexts/TechContext";

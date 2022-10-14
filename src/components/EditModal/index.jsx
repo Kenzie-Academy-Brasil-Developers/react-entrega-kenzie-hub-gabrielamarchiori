@@ -5,6 +5,8 @@ import * as yup from "yup";
 import { TechContext } from "../../contexts/TechContext";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import { ButtonDarkRed, ButtonRed } from "../../styles/button";
+import {DivForm} from '../../styles/div'
+import { DivModal } from "../../styles/modal";
 
 const EditModal = () => {
     const {isEditModal, setEditModal, editTech, deleteTech, techInfo, setTechInfo} = useContext(TechContext)
@@ -23,16 +25,17 @@ const EditModal = () => {
     });
 
     return (
-        <div className="Container-modal">
+        <DivModal>
             <div className="modal">
                 <div className="screen-modal">
+                    <div className="my-modal">
                     <div className="modal-header">
                         <h3>Tecnologia Detalhes</h3>
                         <IoMdCloseCircleOutline className="icon-close"
                         onClick={() => setEditModal(!isEditModal)}
                         />
                     </div>
-
+                    <DivForm>
                     <form onSubmit={handleSubmit ((formData)=>  editTech(techInfo.id, formData))}>
                         <label htmlFor="title">Nome</label>
                         <input type="text" 
@@ -52,10 +55,11 @@ const EditModal = () => {
                         <ButtonDarkRed type="submit">Salvar alterações</ButtonDarkRed> 
                         <ButtonRed onClick={() => deleteTech(techInfo.id)}>Excluir</ButtonRed> 
                     </form>
-
+                    </DivForm>
+                    </div>
                 </div>
             </div>
-        </div>
+        </DivModal>
     )
 }
 
