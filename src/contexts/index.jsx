@@ -1,12 +1,12 @@
-import {UserProvider} from "./UserContext"
+import { TechProvider } from "./TechContext";
+import { UserProvider } from "./UserContext";
 
-const Contexts = ({children}) => {
+const Contexts = ({ children }) => {
+  return (
+    <TechProvider>
+      <UserProvider>{children}</UserProvider>
+    </TechProvider>
+  );
+};
 
-    return (
-        <UserProvider>
-            {children}
-        </UserProvider>
-    )
-}
-
-export default Contexts
+export default Contexts;

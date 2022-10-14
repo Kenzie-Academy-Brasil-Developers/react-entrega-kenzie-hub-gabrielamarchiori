@@ -3,15 +3,19 @@ import Logo from "../../assets/Logo.png";
 import { DivDash, DivLoad } from "./style";
 import { StyledLinkHeader } from "../../styles/link";
 import { UserContext } from "../../contexts/UserContext";
+import { TechContext } from "../../contexts/TechContext";
+import { AiOutlinePlus } from "react-icons/ai"
+import {BsTrash} from "react-icons/bs"
 
 const Dashboard = () => {
   const {user, loading} = useContext(UserContext)
+  const {technology} = useContext(TechContext)
+  console.log(technology)
 
   function logout() {
     window.localStorage.clear();
   }
-
-  
+    
   return (
     <>
       {loading ? (
@@ -36,11 +40,32 @@ const Dashboard = () => {
             </div>
 
             <div className="dashboard-info">
-              <h2>Que pena! Estamos em desenvolvimento :(</h2>
-              <p>
-                Nossa aplicação está em desenvolvimento, em breve teremos
-                novidades
-              </p>
+              <div className="info-header">
+                <p>Tecnologias</p>
+                <AiOutlinePlus
+                className="icon-plus"
+                />
+              </div>
+
+              <div className="info-tech">
+                <ul className="list-tech">
+                  {technology.map((tech) => {
+
+                    return (
+                      <li key={tech.id}>
+                      <p>{tech.title}</p>
+                      <div className="status-tech">
+                        <span>{tech.status}</span>
+                        <BsTrash className="icon-trash"/>
+                      </div>
+
+                    </li>
+                    )
+                    
+                  })}
+                </ul>
+
+              </div>
             </div>
           </div>
         </DivDash>
