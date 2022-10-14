@@ -5,6 +5,8 @@ import * as yup from "yup";
 import {IoMdCloseCircleOutline} from 'react-icons/io'
 import { TechContext } from "../../contexts/TechContext";
 import {ButtonRed} from "../../styles/button"
+import { DivModal } from "../../styles/modal";
+import { DivForm } from "../../styles/div";
 
 const AddModal = () => {
     const {isAddModal, setAddModal, addTech} = useContext(TechContext)
@@ -19,41 +21,45 @@ const AddModal = () => {
     })
 
     return (
-        <div className="Container-modal">
+        <DivModal>
             <div className="modal">
                 <div className="screen-modal">
                     <div className="my-modal">
-                        
-                    </div>
                     <div className="modal-header">
                         <h3>Cadastrar Tecnologia</h3>
                         <IoMdCloseCircleOutline className="icon-close"
                         onClick={() => setAddModal(!isAddModal)}
                         />
                     </div>
+                    <DivForm>
+                        <form onSubmit={handleSubmit(addTech)}>
+                            <label htmlFor="title">Nome</label>
+                            <input type="text" 
+                            placeholder="Nome da tecnologia"
+                            {...register("title")}/>
+                            <p>{errors.title?.message}</p>
 
-                    <form onSubmit={handleSubmit(addTech)}>
-                        <label htmlFor="title">Nome</label>
-                        <input type="text" 
-                        placeholder="Nome da tecnologia"
-                        {...register("title")}/>
-                        <p>{errors.title?.message}</p>
-
-                        <label htmlFor="status">Selecione um status</label>
-                        <select name="status" id="status"
-                        {...register("status")}>
-                            <option value="">Selecione um</option>
-                            <option value="Iniciante">Iniciante</option>
-                            <option value="Intermediário">Intermediário</option>
-                            <option value="Avançado">Avançado</option>
-                        </select>
-                        <p>{errors.status?.message}</p>
-                        <ButtonRed type="submit">Cadastrar Tecnologia</ButtonRed>   
-                    </form>
+                            <label htmlFor="status">Selecione um status</label>
+                            <select name="status" id="status"
+                            {...register("status")}>
+                                <option value="">Selecione um...</option>
+                                <option value="Iniciante">Iniciante</option>
+                                <option value="Intermediário">Intermediário</option>
+                                <option value="Avançado">Avançado</option>
+                            </select>
+                            <p>{errors.status?.message}</p>
+                            <ButtonRed type="submit">Cadastrar Tecnologia</ButtonRed>   
+                        </form>
+                    </DivForm>
+                    </div>
+                    
 
                 </div>
             </div>
-        </div>
+
+        </DivModal>
+            
+        
     )
 }
 

@@ -61,6 +61,12 @@ export const DivForm = styled.div `
         margin-bottom: 1.4rem;
     }
 
+    .buttons-modal {
+        display: flex;
+        flex-direction: row;
+        gap: 25px
+    }
+
     a {
         display: flex;
         justify-content: center;

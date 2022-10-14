@@ -18,4 +18,8 @@ export const ButtonDarkRed = styled(ButtonRed)`
     background-color: var(--color-primary-negative);
     
 `
+export const ButtonGrey = styled(ButtonRed)`
+
+    background-color: var(--color-grey-1);
+`
 

@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { TechContext } from "../../contexts/TechContext";
 import { IoMdCloseCircleOutline } from "react-icons/io";
-import { ButtonDarkRed, ButtonRed } from "../../styles/button";
+import { ButtonDarkRed, ButtonGrey, ButtonRed } from "../../styles/button";
 import {DivForm} from '../../styles/div'
 import { DivModal } from "../../styles/modal";
 
@@ -46,14 +46,16 @@ const EditModal = () => {
                         <label htmlFor="status">Selecione um status</label>
                         <select name="status" id="status"
                         {...register("status")}>
-                            <option value="">Selecione um</option>
+                            <option value="">Selecione um...</option>
                             <option value="Iniciante">Iniciante</option>
                             <option value="Intermediário">Intermediário</option>
                             <option value="Avançado">Avançado</option>
                         </select>
                         <p>{errors.status?.message}</p>
-                        <ButtonDarkRed type="submit">Salvar alterações</ButtonDarkRed> 
-                        <ButtonRed onClick={() => deleteTech(techInfo.id)}>Excluir</ButtonRed> 
+                        <div className="buttons-modal">
+                            <ButtonDarkRed type="submit">Salvar alterações</ButtonDarkRed> 
+                            <ButtonGrey onClick={() => deleteTech(techInfo.id)}>Excluir</ButtonGrey> 
+                        </div>
                     </form>
                     </DivForm>
                     </div>

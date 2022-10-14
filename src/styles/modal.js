@@ -44,6 +44,8 @@ export const DivModal = styled.div`
                 background-color: var(--color-grey-2);
                 border-radius: 4px 4px 0px 0px;
 
+                margin-bottom: 15px;
+
                 h3 {
                     color: var(--color-grey-0);
                     font-weight: var(--font-weigth-1);

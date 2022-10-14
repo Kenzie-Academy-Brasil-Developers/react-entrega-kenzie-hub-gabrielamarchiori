@@ -48,6 +48,7 @@ export const TechProvider = ({ children }) => {
 
       await api.delete(`/users/techs/${id}`)
 
+      setEditModal(false)
       toast.success("Tecnologia deletada com sucesso!!")
     }
     catch (error) {
