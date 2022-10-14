@@ -1,9 +1,7 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
-import api from "../../services/api";
-import { useNavigate, Link } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { Link } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 
 import Logo from "../../assets/Logo.png";
@@ -11,11 +9,16 @@ import { DivForm } from "../../styles/div";
 import { ButtonRed } from "../../styles/button";
 import { LoginContainer } from "./style";
 import { StyledLinkRegister } from "../../styles/link";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
 
 const Login = () => {
+
+  const {loginUser} = useContext(UserContext)
+  
   const formSchema = yup.object().shape({
     email: yup.string().required("E-mail obrigatório").email("E-mail inválido"),
-    password: yup.string().required("Senha obrigatório"),
+    password: yup.string().required("Senha obrigatória"),
   });
 
   const {
@@ -28,29 +31,13 @@ const Login = () => {
     resolver: yupResolver(formSchema),
   });
 
-  const navigate = useNavigate();
-
-  const onsubmit = (data) => {
-    api
-      .post("/sessions", data)
-      .then((response) => {
-        window.localStorage.clear();
-        window.localStorage.setItem("authToken", response.data.token);
-        window.localStorage.setItem("authId", response.data.user.id);
-        navigate("/dashboard");
-        toast.success("Login realizado com sucesso!");
-      })
-
-      .catch((err) => setError(toast.error(err.response.data.message)));
-  };
-
   return (
     <div className="page-login">
       <LoginContainer>
         <img src={Logo} alt="Logo" />
         <DivForm>
           <h2>Login</h2>
-          <form onSubmit={handleSubmit(onsubmit)}>
+          <form onSubmit={handleSubmit(loginUser)}>
             <label htmlFor="email">E-mail</label>
             <input
               type="email"
