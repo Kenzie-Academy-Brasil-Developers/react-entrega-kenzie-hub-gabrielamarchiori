@@ -48,8 +48,8 @@ export const TechProvider = ({ children }) => {
 
       await api.delete(`/users/techs/${id}`)
 
-      setEditModal(false)
       toast.success("Tecnologia deletada com sucesso!!")
+      setEditModal(false)
     }
     catch (error) {
       toast.error(error.response.data.message)
@@ -64,7 +64,7 @@ export const TechProvider = ({ children }) => {
 
       await api.put(`/users/techs/${id}`, data);
       setEditModal(false)
-      toast.success("Tecnologia editada com sucesso!!");
+      toast.success("Tecnologia atualizada com sucesso!!");
     }
     catch(error) {
       toast.error(error.response.data.message)

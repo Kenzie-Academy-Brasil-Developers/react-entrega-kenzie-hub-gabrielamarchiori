@@ -12,7 +12,7 @@ import EditModal from "../../components/EditModal";
 const Dashboard = () => {
   const { user } = useContext(UserContext);
   const { technology, isAddModal, setAddModal, deleteTech, isEditModal, setEditModal,setTechInfo } = useContext(TechContext);
-  
+
   function logout() {
     window.localStorage.clear();
   }
@@ -52,7 +52,7 @@ const Dashboard = () => {
               </div>
 
               <div className="info-tech">
-                <ul className="list-tech">
+                  <ul className="list-tech">
                   {technology.map((tech) => {
                     return (
                       <li key={tech.id}
