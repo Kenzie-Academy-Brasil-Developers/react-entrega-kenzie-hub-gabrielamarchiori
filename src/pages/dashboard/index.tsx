@@ -9,7 +9,6 @@ import {
   TechContext,
 } from "../../contexts/TechContext";
 import { AiOutlinePlus } from "react-icons/ai";
-import { BsTrash } from "react-icons/bs";
 import AddModal from "../../components/AddModal";
 import EditModal from "../../components/EditModal";
 
@@ -79,13 +78,6 @@ const Dashboard = () => {
                         <p>{tech.title}</p>
                         <div className="status-tech">
                           <span>{tech.status}</span>
-                          <button
-                            onClick={() => {
-                              deleteTech(tech.id);
-                            }}
-                          >
-                            <BsTrash className="icon-trash" />
-                          </button>
                         </div>
                       </li>
                     );
