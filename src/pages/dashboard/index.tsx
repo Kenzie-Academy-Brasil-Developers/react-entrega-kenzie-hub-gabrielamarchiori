@@ -6,7 +6,6 @@ import { iUserContext, UserContext } from "../../contexts/UserContext";
 import {
   iTechContext,
   iTechInfo,
-  iTechnology,
   TechContext,
 } from "../../contexts/TechContext";
 import { AiOutlinePlus } from "react-icons/ai";
@@ -69,7 +68,7 @@ const Dashboard = () => {
                 <h2>Você ainda não tem tecnologias cadastradas :(</h2>
               ) : (
                 <ul className="list-tech">
-                  {technology.map((tech: iTechnology) => {
+                  {technology.map((tech: iTechInfo) => {
                     return (
                       <li
                         key={tech.id}
