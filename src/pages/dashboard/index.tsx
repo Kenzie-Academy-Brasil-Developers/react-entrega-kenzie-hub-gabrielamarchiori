@@ -2,15 +2,20 @@ import { useContext } from "react";
 import Logo from "../../assets/Logo.png";
 import { DashInfo, DivDash } from "./style";
 import { StyledLinkHeader } from "../../styles/link";
-import { UserContext } from "../../contexts/UserContext";
-import { TechContext } from "../../contexts/TechContext";
+import { iUserContext, UserContext } from "../../contexts/UserContext";
+import {
+  iTechContext,
+  iTechInfo,
+  iTechnology,
+  TechContext,
+} from "../../contexts/TechContext";
 import { AiOutlinePlus } from "react-icons/ai";
 import { BsTrash } from "react-icons/bs";
 import AddModal from "../../components/AddModal";
 import EditModal from "../../components/EditModal";
 
 const Dashboard = () => {
-  const { user } = useContext(UserContext);
+  const { user } = useContext<iUserContext>(UserContext);
   const {
     technology,
     isAddModal,
@@ -19,13 +24,13 @@ const Dashboard = () => {
     isEditModal,
     setEditModal,
     setTechInfo,
-  } = useContext(TechContext);
+  } = useContext<iTechContext>(TechContext);
 
   function logout() {
     window.localStorage.clear();
   }
 
-  function modalEdite(element) {
+  function modalEdite(element: iTechInfo) {
     setTechInfo(element);
     setEditModal(!isEditModal);
   }
@@ -45,8 +50,8 @@ const Dashboard = () => {
 
           <div className="container-perfil">
             <div className="dashboard-perfil">
-              <h2>Olá, {user.name}</h2>
-              <p>{user.course_module}</p>
+              <h2>Olá, {user?.name}</h2>
+              <p>{user?.course_module}</p>
             </div>
           </div>
 
@@ -64,14 +69,12 @@ const Dashboard = () => {
                 <h2>Você ainda não tem tecnologias cadastradas :(</h2>
               ) : (
                 <ul className="list-tech">
-                  {technology.map((tech) => {
+                  {technology.map((tech: iTechnology) => {
                     return (
                       <li
                         key={tech.id}
-                        onClick={(event) => {
-                          if (event.target.tagName !== "button") {
-                            modalEdite(tech);
-                          }
+                        onClick={() => {
+                          modalEdite(tech);
                         }}
                       >
                         <p>{tech.title}</p>

@@ -1,17 +1,14 @@
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import api from "../../services/api";
 
-import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { DivForm, DivHeader } from "../../styles/div";
 import { ButtonDarkRed } from "../../styles/button";
 import Logo from "../../assets/Logo.png";
 import { RegisterContainer } from "./style";
 import { StyledLinkHeader } from "../../styles/link";
-import { UserContext } from "../../contexts/UserContext";
+import { iRegister, UserContext } from "../../contexts/UserContext";
 import { useContext } from "react";
 
 const Signup = () => {
@@ -44,7 +41,7 @@ const Signup = () => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm({
+  } = useForm<iRegister>({
     resolver: yupResolver(forSchema),
   });
 
@@ -109,11 +106,7 @@ const Signup = () => {
             <p>{errors.contact?.message}</p>
 
             <label htmlFor="course_module">Selecionar Módulo</label>
-            <select
-              name="course_module"
-              id="course_module"
-              {...register("course_module")}
-            >
+            <select id="course_module" {...register("course_module")}>
               <option value="">Selecione um módulo</option>
               <option value="Primeiro módulo (Introdução ao Frontend)">
                 Primeiro Módulo

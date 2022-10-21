@@ -10,12 +10,11 @@ import { ButtonRed } from "../../styles/button";
 import { LoginContainer } from "./style";
 import { StyledLinkRegister } from "../../styles/link";
 import { useContext } from "react";
-import { UserContext } from "../../contexts/UserContext";
+import { iLogin, UserContext } from "../../contexts/UserContext";
 
 const Login = () => {
+  const { loginUser } = useContext(UserContext);
 
-  const {loginUser} = useContext(UserContext)
-  
   const formSchema = yup.object().shape({
     email: yup.string().required("E-mail obrigatório").email("E-mail inválido"),
     password: yup.string().required("Senha obrigatória"),
@@ -25,9 +24,7 @@ const Login = () => {
     register,
     handleSubmit,
     formState: { errors },
-    setError,
-    reset,
-  } = useForm({
+  } = useForm<iLogin>({
     resolver: yupResolver(formSchema),
   });
 
@@ -60,8 +57,7 @@ const Login = () => {
               <span>Ainda não possui conta?</span>
             </Link>
 
-            <StyledLinkRegister to="/signup"> Cadastre-se
-            </StyledLinkRegister>
+            <StyledLinkRegister to="/signup"> Cadastre-se</StyledLinkRegister>
           </form>
         </DivForm>
       </LoginContainer>
