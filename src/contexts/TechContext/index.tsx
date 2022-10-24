@@ -13,16 +13,20 @@ interface iUserCountextProps {
   children: React.ReactNode;
 }
 
+interface iEditeTech {
+  status: string;
+}
+
 export interface iTechContext {
   addTech: (data: iAdd) => void;
   deleteTech: (id: string) => void;
-  editTech: (id: string, data: string) => void;
+  editTech: (id: string, data: iEditeTech) => void;
   isAddModal: boolean;
   setAddModal: React.Dispatch<React.SetStateAction<boolean>>;
   isEditModal: boolean;
   setEditModal: React.Dispatch<React.SetStateAction<boolean>>;
-  techInfo: iTechInfo | any;
-  setTechInfo: React.Dispatch<React.SetStateAction<iTechInfo | any>>;
+  techInfo: iTechInfo | null ;
+  setTechInfo: React.Dispatch<React.SetStateAction<iTechInfo | null>>;
   technology: iTechInfo[] | [];
   setTechnology: React.Dispatch<React.SetStateAction<iTechInfo[] | []>>;
 }
@@ -95,7 +99,7 @@ export const TechProvider = ({ children }: iUserCountextProps) => {
     }
   }
 
-  async function editTech(id: string, data: string) {
+  async function editTech(id: string, data: iEditeTech) {
     const token = localStorage.getItem("tokenUser");
 
     try {

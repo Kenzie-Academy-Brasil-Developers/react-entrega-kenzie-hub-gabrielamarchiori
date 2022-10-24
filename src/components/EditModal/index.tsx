@@ -2,7 +2,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
-import { iTechContext, TechContext } from "../../contexts/TechContext";
+import {
+  iTechContext,
+  iTechInfo,
+  TechContext,
+} from "../../contexts/TechContext";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import { ButtonDarkRed, ButtonGrey, ButtonRed } from "../../styles/button";
 import { DivForm } from "../../styles/div";
@@ -49,8 +53,8 @@ const EditModal = () => {
             </div>
             <DivForm>
               <form
-                onSubmit={handleSubmit((formData: any) =>
-                  editTech(techInfo.id, formData)
+                onSubmit={handleSubmit((formData: editeModal) =>
+                  editTech((techInfo as iTechInfo).id, formData)
                 )}
               >
                 <label htmlFor="title">Nome</label>
@@ -66,7 +70,9 @@ const EditModal = () => {
                 <p>{errors?.status?.message}</p>
                 <div className="buttons-modal">
                   <ButtonDarkRed type="submit">Salvar alterações</ButtonDarkRed>
-                  <ButtonGrey onClick={() => deleteTech(techInfo.id)}>
+                  <ButtonGrey
+                    onClick={() => deleteTech((techInfo as iTechInfo).id)}
+                  >
                     Excluir
                   </ButtonGrey>
                 </div>
